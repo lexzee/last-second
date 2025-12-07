@@ -1,15 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* BGs */
+  --background: #050505;
+  --surface: #121212;
+  --surface-highlight: #1e1e1e;
+
+  /* TXTs */
+  --foreground: #ededed;
+  --muted: #a1a1aa;
+
+  /* Brand */
+  --primary: #8b5cf6;
+  --secondary: #ec4899;
+  --accent: #14f195;
+
+  /* Status */
+  --danger: #ef4444;
+  --border: #27272a;
+
+  --card: #18181b;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-highlight: var(--surface-highlight);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-border: var(--border);
+  --color-card: var(--card);
+
+  /* --color-card:  */
+
+  --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +51,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.glass-panel {
+  @apply bg-[#18181b]/80 backdrop-blur-md border border-border shadow-xl;
+}
+
+.neon-text {
+  text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
 }
