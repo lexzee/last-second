@@ -1,0 +1,127 @@
+{
+  "address": "8hThxmBTJD2D2sB919rGcLJ4N1Af9n9fheZrB8D99Urx",
+  "metadata": {
+    "name": "last_second",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim",
+      "discriminator": [62, 198, 214, 193, 213, 159, 108, 210],
+      "accounts": [
+        {
+          "name": "game",
+          "writable": true
+        },
+        {
+          "name": "winner",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [175, 175, 109, 31, 13, 152, 155, 237],
+      "accounts": [
+        {
+          "name": "game",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "play",
+      "discriminator": [213, 157, 193, 142, 228, 56, 248, 150],
+      "accounts": [
+        {
+          "name": "game",
+          "writable": true
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameState",
+      "discriminator": [144, 94, 208, 172, 248, 99, 134, 120]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "GameEnded",
+      "msg": "The game has already ended."
+    },
+    {
+      "code": 6001,
+      "name": "TimeExpired",
+      "msg": "Time has run out! Call claim instead."
+    },
+    {
+      "code": 6002,
+      "name": "GameNotOver",
+      "msg": "The timer is still running!"
+    },
+    {
+      "code": 6003,
+      "name": "GameAlreadyClaimed",
+      "msg": "Pot already claimed."
+    },
+    {
+      "code": 6004,
+      "name": "NotTheWinner",
+      "msg": "You are not the last bidder."
+    }
+  ],
+  "types": [
+    {
+      "name": "GameState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "deadline",
+            "type": "i64"
+          },
+          {
+            "name": "pot_amount",
+            "type": "u64"
+          },
+          {
+            "name": "last_bidder",
+            "type": "pubkey"
+          },
+          {
+            "name": "game_active",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ]
+}
